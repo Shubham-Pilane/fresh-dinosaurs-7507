@@ -1,10 +1,9 @@
-
 #maincont{
     width: 100%;
     height: 100;
-    border: 2px solid black;
-    /* background: linear-gradient(180deg,#003263 0%,#004387 50%); */
+    border: 2px solid rgb(6, 8, 116);
     background: linear-gradient(180deg,black 0%,rgb(52, 50, 50) 50%);
+    /* background: linear-gradient(180deg,#003263 0%,#004387 50%); */
     }
     
     body{
@@ -21,7 +20,6 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 12) 0px 0px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     border-radius: 20px;
     }
-    
     #logoimgdiv{
         /* background-color: #ffff; */
         width: 300px;
@@ -93,17 +91,17 @@
     }
     .incont>p:nth-child(2){
     font-style: normal;
-    font-weight: 100;
-    font-size: 40px;
-    /* line-height: 82px; */
+    font-weight: 500;
+    font-size: 55px;
+    line-height: 82px;
     margin: 0px;
     
     }
-    .incont>p{
+    .incont>p:nth-child(3){
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    /* line-height: 24px; */
+    line-height: 24px;
     }
     input{
     width: 80%;
@@ -115,14 +113,27 @@
     font-size: 14px;
     line-height: 21px;
     } 
-   
+    .incont>p:nth-child(5){
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    }
+    .incont>p:nth-child(7){
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: #ad3113;
+    margin-top: 16px;
+    text-align: right;
+    margin-right: 5%;
+    cursor: pointer;
+    }
     #divbtn{
     /* border: 2px solid red; */
-    /* margin-top: 30px; */
-    padding-top: 20px;
     margin: auto;
     text-align: center;
-    /* border: 2px solid red; */
     }
     button{
     width: 85%;
@@ -138,25 +149,29 @@
     color: white;
     cursor: pointer;
     }
-    #divbtn+p{
+    button+p{
     margin-top: 11px;
     font-size: 16px;
     font-weight: 400;
-    text-align: center;
+    text-align: right;
     color: #8D8D8D;
     margin-right: 50px;
-    /* border: 2px solid red; */
     
     }
-    /* .incont>p:nth-child(5){ */
-    /* text-align: center; */
-    /* color: #B5B5B5; */
-    /* } */
+    button+p>span{
+    margin-top: 11px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: right;
+    color: #c3452b;
+    }
+    .incont>p:nth-child(9){
+    text-align: center;
+    color: #B5B5B5;
+    }
     .contwith{
     display: flex;
     justify-content: center; 
-    text-align: center;
-    /* border: 2px solid red; */
     }
     .contwith img{
     /* width: 20%; */
@@ -167,15 +182,3 @@
     /* .horline{
         display: flex;
     } */
-    .flname{
-        display: flex;
-    }
-    .flname p,
-    .incont p:nth-child(4),
-    .incont p:nth-child(5),
-    .incont p:nth-child(6),
-    .incont p:nth-child(8)
-    {
-        margin-bottom: 0px;
-    }
-    

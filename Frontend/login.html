@@ -4,19 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>Shoppers</title>
+    <link rel="stylesheet" href="./login.css">
 </head>
 <body>
+  <div id="maincont">
     <div id="cont">
-        <h1>Login Page</h1>
-        
-        <input type="text" id="email" placeholder="Enter your email.....">
-        <input type="password" id="pass" placeholder="Enter your password.....">
-        
-        <button onclick="onLogin()">Login</button>
+      <div class="contsec">
+        <div id="logoimgdiv">
+          <img src="./finprologo.png" alt="">
+        </div>
+        <div class="logchar">
+          <h3 style="color: white;">No account ?</h3>
+          <a href="./signup.html">click here</a>
+        </div>
+      </div>
+      <div class="secdiv">
+        <div class="incont">
+          <h2>Shoppers</h2>
+          <p>Log in</p>
+          <p>Enter your username or email address</p>
+          <input id="email" type="text" placeholder="Username or email address" required>
+          <p>Enter your Password</p>
+          <input id="pass" type="password" placeholder="password" required>
+          <p>Forgot Password</p>
+          <div id="divbtn">
+            <button id="loginbt" onclick="onLogin()">LOG IN</button>
+          </div>
+          <!-- <p>No account ? <span>Sign up</span></p> -->
+          <p>or continue with</p>
+          <div class="horline">
+            <hr>
+          </div>
+          <div class="contwith"> 
+            <img src="Facebook.png" alt="">
+            <img src="apple.png" alt="">
+            <img src="google.png" alt="">
+           </div>
+        </div> 
+      </div>
     </div>
+  </div>
 </body>
+<!-- <script src="./signin.js"></script> -->
 </html>
 <script>
     const onLogin=()=>{
@@ -26,7 +56,7 @@
             password:document.getElementById("pass").value
            
         }
-        // console.log(payload)
+        console.log(payload)
         fetch("http://localhost:8080/users/login",{
             method:"POST",
             headers:{
@@ -36,10 +66,22 @@
     
         }).then(res=>res.json())
         .then(res=>{
-            console.log(res)
-        localStorage.setItem("token",res.token)
-        alert("login successful! You will now be redirected to the create page.");
-      window.location.href = "index.html";
+          console.log(res.msg)
+           if(res.msg=="Login successful !!")
+           {
+            localStorage.setItem("token",res.token)
+          alert("login successful! You will now be redirected to the Products page.");
+          window.location.href = "index.html";
+           }
+           else if(res.msg=="Password Mismatch !!")
+           {
+            alert("Password Mismatch !!")
+           }
+           else if(res.msg=="Please create an account first !!")
+           {
+            alert("Please create an account first")
+           }
+       
         })
         .catch(err=>consle.log(err))
     }

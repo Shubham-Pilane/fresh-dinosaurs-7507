@@ -16,8 +16,8 @@
                     <img src="./finprologo.png" alt="">
                 </div>
                 <div class="logchar">
-                    <h3>Have an Account?</h3>
-                    <a href="./login.html">SIGN IN</a>
+                    <h3 style="color: white;">Have an Account?</h3>
+                    <a href="./login.html">LOG IN</a>
                 </div>
               </div>
             <div  class="secdiv">
@@ -68,7 +68,7 @@ const onSignup=()=>{
          email:document.getElementById("email").value,
          password:document.getElementById("pass").value
     }
-    // console.log(payload)
+    console.log(payload)
     if(payload.password==cpass)
     {
         fetch("http://localhost:8080/users/register",{
@@ -80,9 +80,16 @@ const onSignup=()=>{
 
     }).then(res=>res.json())
     .then(res=>{
-        console.log(res)
-    alert("Signup successful! You will now be redirected to the login page.");
-      window.location.href = "login.html"})
+        if(res.msg=="Email already exists")
+        {
+            alert("Email already exists ! please use another Email")
+        }
+        else{
+            alert("Signup successful! You will now be redirected to the login page.");
+            window.location.href = "login.html"}
+        }
+   
+      )
 
     .catch(err=>consle.log(err))
     }

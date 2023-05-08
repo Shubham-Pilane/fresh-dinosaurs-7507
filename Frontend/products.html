@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>products</title>
+    <link rel="stylesheet" href="./products.css">
+</head>
+<body> 
+  <!-- //Navbar  -->
+  <div class="sp">
+    <nav class="navbar">
+        <ul>
+            <!-- <a href="#"><li>Home</li></a>
+            <a href="#"><li>About</li></a>
+            <a href="#"><li>Contact Us</li></a> -->
+            <img src="./finprologo.png" alt="">
+            <div class="search">
+                <input type="text" name="search" id="search" placeholder="Search">
+               <a href="./signup.html" target="_blank" id="sign"><u></u>Sign in</u></a>
+               <a href="./cart.html" target="_blank" id="sign"><u></u>Cart</u></a>
+            </div>
+        </ul>
+    </nav>
+        <div class="nav">
+            <input type="checkbox" id="nav-check">
+            <div class="nav-header">
+              <div class="nav-title">
+               <!-- Shoppers -->
+               <button> Home</button>
+               
+               <button>About</button>
+               <button> Products</button>
+               <button>Deals</button>
+              </div>
+            </div>
+            <div class="nav-btn">
+              <label for="nav-check">
+                <span></span>
+                <span></span>
+                <span></span>
+              </label>
+            </div>
+            
+            <div class="nav-links">
+                <ul>
+              <li><a href="#" target="_blank">Deal of the Day</a></li>
+              <li><a href="#" target="_blank">Used</a></li>
+              <li><a href="#" target="_blank">VIP Rewards</a></li>
+              <li><a href="./products.html" target="_blank">Products</a></li>
+              <li><a href="#" target="_blank">Sale</a></li>
+              <li><a href="#" target="_blank">Gift Card</a></li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navbar end -->
+    
+    <div id="parent">
+        
+
+    </div>
+</body>
+</html>
+
+<script>
+const getData=()=>{
+    fetch("http://localhost:8080/data/",{
+    
+        headers:{
+          "Authorization":localStorage.getItem("token")
+        }
+
+    }).then(res=>res.json())
+    
+        .then(products => {
+      const parent = document.getElementById("parent");
+      for (let product of products) {
+        const div = document.createElement("div");
+        const img3 = document.createElement("img");
+        const des= document.createElement("p");
+        const price = document.createElement("h4");
+        const rating = document.createElement("h4");
+        const delBtn = document.createElement("button");
+        const upBtn = document.createElement("button")
+        
+        img3.src= product.image3
+        let str=product.description
+        let result = str.replace(/[^a-zA-Z\s]/g, "");
+        if(result.length>150)
+        {
+         result="Pampy Angel gives you most stylish unique and comfortable sliders for your daily casual wear"
+        }
+        des.textContent = result;
+        price.textContent = `Price:- ${product.discountPriceInr}`;
+        rating.textContent=`Rating:- ${product.rating}`
+        delBtn.textContent = "Delete";
+        upBtn.textContent = "Add to Cart"
+        
+        delBtn.addEventListener("click", () => {
+          fetch(`https://weak-pink-shark-vest.cyclic.app/notes/delete/${product._id}`, {
+            method: "DELETE",
+            headers: {
+              "Authorization": localStorage.getItem("token")
+            }
+          })
+            .then(res => {
+              if (res.ok) {
+                div.remove();
+              } else {
+                console.log("Delete failed.");
+              }
+            })
+            .catch(err => console.log(err));
+        });
+
+
+
+        let Add = []
+        upBtn.addEventListener("click", () => {
+  let already = false;
+  Add.map((el1) => {
+    if (el1.img3 == product.img3) {
+      already = true;
+    }
+  });
+  if (already) {
+    alert("Product already in the bag");
+  } else {
+    product.quantity = 1;
+    const Add = JSON.parse(localStorage.getItem("Add")) || [];
+    Add.push(product);
+    localStorage.setItem("Add", JSON.stringify(Add));
+    console.log(Add);
+    alert("Product added successfully");
+  }
+});
+
+        div.appendChild(img3);
+        div.appendChild(des);
+        div.appendChild(rating)
+        div.appendChild(price);
+        // div.appendChild(delBtn);
+        div.appendChild(upBtn)
+        parent.appendChild(div);
+      }
+    })
+    .catch(err => console.log(err));
+};
+
+getData()
+
+</script>
