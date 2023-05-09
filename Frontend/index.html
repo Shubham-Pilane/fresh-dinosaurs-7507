@@ -400,3 +400,16 @@
       </footer>
 
 </html>
+<script>
+    let cart = document.getElementById("sign");
+let token = localStorage.getItem("token")
+cart.addEventListener("click", ()=>{
+
+    if(token){
+        window.location.href="./cart.html"
+    }
+    else{
+        window.location.href='./signup.html'
+    }
+})
+</script>

@@ -28,7 +28,7 @@
             <div class="nav-header">
               <div class="nav-title">
                <!-- Shoppers -->
-               <button> Home</button>
+               <a href="./index.html"> <button onclick="home()" id="home">Home</button></a>
                
                <button>About</button>
                <button> Products</button>
@@ -62,12 +62,81 @@
         
 
     </div>
+    
+    <!-- Footer -->
+    <footer class="footer-99382" style="background-image: url('images/hero_1.jpg');">
+        
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 pr-md-5">
+            <a href="#" class="footer-site-logo d-block mb-4" style="color: rgb(227, 227, 14);">Shoppers</a>
+            <p></p>
+          </div>
+          <div class="col-md">
+            <h3>Discover</h3>
+            <ul class="list-unstyled nav-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Portfolio</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md">
+            <h3>About</h3>
+            <ul class="list-unstyled nav-links">
+              <li><a href="#">Clients</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Testimonials</a></li>
+              <li><a href="#">Journal</a></li>
+            </ul>
+          </div>
+          <div class="col-md">
+            <h3>Help</h3>
+            <ul class="list-unstyled nav-links">
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms &amp; Conditions</a></li>
+              <li><a href="#">Partners</a></li>
+            </ul>
+          </div>
+          <div class="col-md">
+            <h3>Follow Us</h3>
+            <ul class="social list-unstyled">
+              <li><a href="#" class="pl-0"><span class="icon-instagram">
+                  <img src="https://www.svgrepo.com/show/506511/instagram.svg" alt="">
+              </span></a></li>
+              <li><a href="#"><span class="icon-twitter">
+                  <img src="https://www.svgrepo.com/show/506517/linkedin.svg" alt="">
+              </span></a></li>
+              <li><a href="#"><span class="icon-facebook">
+                  <img src="https://www.svgrepo.com/show/506477/facebook.svg" alt="">
+              </span></a></li>
+              <li><a href="#"><span class="icon-pinterest">
+                  <img src="https://www.svgrepo.com/show/506611/twitter.svg" alt="">
+              </span></a></li>
+            
+            </ul>
+          </div>
+        </div> 
+    
+        <div class="row ">
+          <div class="col-12 text-center">
+            <div class="copyright mt-5 pt-5">
+              <p style="margin-left: 30px;"><small>&copy; 2019&mdash;2020 All Rights Reserved.</small></p>
+            </div>
+          </div>
+        </div> 
+      </div>
+      
+    </footer>
+
 </body>
 </html>
 
 <script>
 const getData=()=>{
-    fetch("http://localhost:8080/data/",{
+    fetch("https://adventurous-sweater-fox.cyclic.app/data/",{
     
         headers:{
           "Authorization":localStorage.getItem("token")
@@ -93,50 +162,28 @@ const getData=()=>{
         {
          result="Pampy Angel gives you most stylish unique and comfortable sliders for your daily casual wear"
         }
-        des.textContent = result;
+        des.textContent = product.name;
         price.textContent = `Price:- ${product.discountPriceInr}`;
         rating.textContent=`Rating:- ${product.rating}`
         delBtn.textContent = "Delete";
         upBtn.textContent = "Add to Cart"
-        
-        delBtn.addEventListener("click", () => {
-          fetch(`https://weak-pink-shark-vest.cyclic.app/notes/delete/${product._id}`, {
-            method: "DELETE",
-            headers: {
-              "Authorization": localStorage.getItem("token")
-            }
-          })
-            .then(res => {
-              if (res.ok) {
-                div.remove();
-              } else {
-                console.log("Delete failed.");
-              }
-            })
-            .catch(err => console.log(err));
-        });
+       
+        upBtn.addEventListener("click", ()=>{
+        fetch("https://adventurous-sweater-fox.cyclic.app/cart/add",{
+        method:"POST",
+        headers:{
+            "Content-type":"application/json",
+            "Authorization":localStorage.getItem("token")
+        },
+        body:JSON.stringify(product)
 
-
-
-        let Add = []
-        upBtn.addEventListener("click", () => {
-  let already = false;
-  Add.map((el1) => {
-    if (el1.img3 == product.img3) {
-      already = true;
-    }
-  });
-  if (already) {
-    alert("Product already in the bag");
-  } else {
-    product.quantity = 1;
-    const Add = JSON.parse(localStorage.getItem("Add")) || [];
-    Add.push(product);
-    localStorage.setItem("Add", JSON.stringify(Add));
-    console.log(Add);
+    }).then(res=>res.json())
+    .then(res=>{
+    console.log(res)
     alert("Product added successfully");
-  }
-});
+      })
+    .catch(err=>console.log(err))
+})
 
         div.appendChild(img3);
         div.appendChild(des);

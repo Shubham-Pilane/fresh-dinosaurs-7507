@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="./cart.css">
+<body> 
+     <!-- //Navbar  -->
+     <div class="sp">
+        <nav class="navbar">
+            <ul>
+                <!-- <a href="#"><li>Home</li></a>
+                <a href="#"><li>About</li></a>
+                <a href="#"><li>Contact Us</li></a> -->
+                <img src="./finprologo.png" alt="">
+                <div class="search">
+                    <input type="text" name="search" id="search" placeholder="Search">
+                   <a href="./signup.html" target="_blank" id="sign"><u></u>Sign in</u></a>
+                   <a href="./cart.html" target="_blank" id="sign"><u></u>Cart</u></a>
+                </div>
+            </ul>
+        </nav>
+            <div class="nav">
+                <input type="checkbox" id="nav-check">
+                <div class="nav-header">
+                  <div class="nav-title">
+                   <!-- Shoppers -->
+                  <a href="./index.html"> <button onclick="home()" id="home">Home</button></a>
+                   
+                   
+                   <button>About</button>
+                   <button> Products</button>
+                   <button>Deals</button>
+                  </div>
+                </div>
+                <div class="nav-btn">
+                  <label for="nav-check">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </label>
+                </div>
+                
+                <div class="nav-links">
+                    <ul>
+                  <li><a href="#" target="_blank">Deal of the Day</a></li>
+                  <li><a href="#" target="_blank">Used</a></li>
+                  <li><a href="#" target="_blank">VIP Rewards</a></li>
+                  <li><a href="./products.html" target="_blank">Products</a></li>
+                  <li><a href="#" target="_blank">Sale</a></li>
+                  <li><a href="#" target="_blank">Gift Card</a></li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Navbar end -->
+    <div id="parent">
+
+    </div>
+     <!-- Footer -->
+     <footer class="footer-99382" style="background-image: url('images/hero_1.jpg');">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 pr-md-5">
+              <a href="#" class="footer-site-logo d-block mb-4" style="color: rgb(227, 227, 14);">Shoppers</a>
+              <p></p>
+            </div>
+            <div class="col-md">
+              <h3>Discover</h3>
+              <ul class="list-unstyled nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+            <div class="col-md">
+              <h3>About</h3>
+              <ul class="list-unstyled nav-links">
+                <li><a href="#">Clients</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Career</a></li>
+                <li><a href="#">Testimonials</a></li>
+                <li><a href="#">Journal</a></li>
+              </ul>
+            </div>
+            <div class="col-md">
+              <h3>Help</h3>
+              <ul class="list-unstyled nav-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms &amp; Conditions</a></li>
+                <li><a href="#">Partners</a></li>
+              </ul>
+            </div>
+            <div class="col-md">
+              <h3>Follow Us</h3>
+              <ul class="social list-unstyled">
+                <li><a href="#" class="pl-0"><span class="icon-instagram">
+                    <img src="https://www.svgrepo.com/show/506511/instagram.svg" alt="">
+                </span></a></li>
+                <li><a href="#"><span class="icon-twitter">
+                    <img src="https://www.svgrepo.com/show/506517/linkedin.svg" alt="">
+                </span></a></li>
+                <li><a href="#"><span class="icon-facebook">
+                    <img src="https://www.svgrepo.com/show/506477/facebook.svg" alt="">
+                </span></a></li>
+                <li><a href="#"><span class="icon-pinterest">
+                    <img src="https://www.svgrepo.com/show/506611/twitter.svg" alt="">
+                </span></a></li>
+              
+              </ul>
+            </div>
+          </div> 
+      
+          <div class="row ">
+            <div class="col-12 text-center">
+              <div class="copyright mt-5 pt-5">
+                <p style="margin-left: 30px;"><small>&copy; 2019&mdash;2020 All Rights Reserved.</small></p>
+              </div>
+            </div>
+          </div> 
+        </div>
+        
+      </footer>
+</body>
+</html>
+
+<script>
+    
+   function home()
+   {  
+    const home= document.getElementById("home")
+    
+
+     home.addEventListener("click",()=>{
+      windows.location.href="./index"
+     })
+   }
+
+    const getData=()=>{
+    fetch("https://adventurous-sweater-fox.cyclic.app/cart/get",{
+    
+        headers:{
+          "Authorization":localStorage.getItem("token")
+        }
+
+    }).then(res=>res.json())
+    
+        .then(products => {
+      const parent = document.getElementById("parent");
+      for (let product of products) {
+        const div = document.createElement("div");
+        const img3 = document.createElement("img");
+        const des= document.createElement("p");
+        const price = document.createElement("h4");
+        const rating = document.createElement("h4");
+        const delBtn = document.createElement("button");
+        const upBtn = document.createElement("button")
+        
+        img3.src= product.image1
+        let str=product.description
+        let result = str.replace(/[^a-zA-Z\s]/g, "");
+        if(result.length>150)
+        {
+         result="Pampy Angel gives you most stylish unique and comfortable sliders for your daily casual wear"
+        }
+        des.textContent = product.name;
+        price.textContent = `Price:- ${product.discountPriceInr}`;
+        rating.textContent=`Rating:- ${product.rating}`
+        delBtn.textContent = "Remove";
+        upBtn.textContent = "Buy"
+
+        delBtn.addEventListener("click", () => {
+          fetch(`https://adventurous-sweater-fox.cyclic.app/cart/rem/${product._id}`, {
+            method: "DELETE",
+            headers: {
+              "Authorization": localStorage.getItem("token")
+            }
+          })
+            .then(res => {
+              if (res.ok) {
+                div.remove();
+              } else {
+                console.log("Delete failed.");
+              }
+            })
+            .catch(err => console.log(err));
+        });
+        
+  
+        div.appendChild(img3);
+        div.appendChild(des);
+        div.appendChild(rating);
+        div.appendChild(price);
+        div.appendChild(delBtn);
+        div.appendChild(upBtn)
+        parent.appendChild(div);
+      }
+    })
+    .catch(err => console.log(err));
+};
+
+getData()
+</script>

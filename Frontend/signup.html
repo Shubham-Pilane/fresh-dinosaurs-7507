@@ -71,7 +71,7 @@ const onSignup=()=>{
     console.log(payload)
     if(payload.password==cpass)
     {
-        fetch("http://localhost:8080/users/register",{
+        fetch("https://adventurous-sweater-fox.cyclic.app/users/register",{
         method:"POST",
         headers:{
             "Content-type":"application/json"
