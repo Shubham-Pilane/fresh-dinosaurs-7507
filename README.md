@@ -1,44 +1,23 @@
-Description
+You can enter your name , email and password and register in our application. or you can use the google or github auth. if already registered you can use login link.
 
-Home Page
+image
 
-![image](https://github.com/Shubham-Pilane/fresh-dinosaurs-7507/assets/121308110/4de70c11-beb7-44c0-89d7-366fc45bfc22)
+Step 2
+You can put your email address and password to login into your account. if you want to forgot your password you can use the forgot password link. or you can goto create a new account.
 
-Sign Up Page
-![image](https://github.com/Shubham-Pilane/fresh-dinosaurs-7507/assets/121308110/87c2b2f3-3cb4-47c0-9d27-3b4c7802a0e0)
+image
 
+Step 3
+If you want to change the password you can put your email address and click on send OTP button then when you get otp then put your new password and otp then click on change password button.
 
+image
 
-Shoppers - Fashion eCommerce Website is a fully functional clone of the popular e-commerce platform Bewkoof.com. It has been meticulously crafted using a robust tech stack consisting of HTML, CSS, JavaScript, MongoDB, Express, and Node.js.
+Step 4
+On left side you can see the connections that you have created. and by clicking on one of them you can start chatting with that when you get click it is showing most recent 10 massage of you. you can click group icon to start new connection.by clicking on video chat button and it will start a video.
 
-The website boasts an appealing design with a user-friendly interface, ensuring seamless navigation across various devices due to its responsive design. The key pages include the Home/Landing page, Products, Cart, Log-in/Sign-up, and Checkout.
+image
 
-Impressively, the website allows users to browse through a wide range of products with detailed information such as images, titles, and prices. Shoppers can easily add items to their cart and conveniently remove them as well.
+Step 5
+By clicking on any name of user's profile that available on our website you can make new connections. image
 
-Moreover, this project has been generously made available for public use without any restrictive licenses, making it a valuable resource for those looking to understand and learn from its code and implementation.
-
-For a firsthand experience of the website, you can visit it at: 
-Deployed Link: https://fluffy-fudge-70688b.netlify.app/
-
-Tech Stack Used:
-
-HTML
-CSS
-JavaScript
-Express
-Node.js
-MongoDB
-Features:
-
-
-
-Responsive Design
-Product listing with images, titles, and prices
-Cart functionality allows adding and removing items
-Please note that as this is a description based on the provided information, the actual website's content and functionality might be subject to updates or changes beyond the given description.
-
-Footer:
-![image](https://github.com/Shubham-Pilane/fresh-dinosaurs-7507/assets/121308110/eeabce3f-c55a-4f41-9c5f-79624487ac1d)
-
-
-Deployed Link:https://fluffy-fudge-70688b.netlify.app/
+Deployed Link : https://reliable-cassata-3a3721.netlify.app/
