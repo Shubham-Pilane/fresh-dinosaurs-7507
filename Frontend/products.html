@@ -136,7 +136,7 @@
 
 <script>
 const getData=()=>{
-    fetch("https://adventurous-sweater-fox.cyclic.app/data/",{
+    fetch("https://unit4-backend.onrender.com/data/",{
     
         headers:{
           "Authorization":localStorage.getItem("token")
@@ -169,7 +169,7 @@ const getData=()=>{
         upBtn.textContent = "Add to Cart"
        
         upBtn.addEventListener("click", ()=>{
-        fetch("https://adventurous-sweater-fox.cyclic.app/cart/add",{
+        fetch("https://unit4-backend.onrender.com/cart/add",{
         method:"POST",
         headers:{
             "Content-type":"application/json",

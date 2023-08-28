@@ -144,7 +144,7 @@
    }
 
     const getData=()=>{
-    fetch("https://adventurous-sweater-fox.cyclic.app/cart/get",{
+    fetch("https://unit4-backend.onrender.com/cart/get",{
     
         headers:{
           "Authorization":localStorage.getItem("token")
@@ -177,7 +177,7 @@
         upBtn.textContent = "Buy"
 
         delBtn.addEventListener("click", () => {
-          fetch(`https://adventurous-sweater-fox.cyclic.app/cart/rem/${product._id}`, {
+          fetch(`https://unit4-backend.onrender.com/cart/rem/${product._id}`, {
             method: "DELETE",
             headers: {
               "Authorization": localStorage.getItem("token")
