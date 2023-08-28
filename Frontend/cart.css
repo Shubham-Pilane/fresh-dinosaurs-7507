@@ -38,6 +38,14 @@
     font-size: 20px;
     color: rgb(17, 67, 17);
   }
+  #parent > div> button{
+    margin: 10px;
+    font-size: 20px;
+    color: red;
+  }
+  #parent > div> button~button{
+    color: green;
+  }
   
 /* css for footer */
 
